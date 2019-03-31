@@ -1,0 +1,35 @@
+body {
+	  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	  line-height: 1.4em;
+	  color: #4d4d4d;
+	  min-width: 230px;
+	  max-width: 550px;
+	  margin: 0 auto;
+	  -webkit-font-smoothing: antialiased;
+	  -moz-osx-font-smoothing: grayscale;
+	  font-weight: 300;
+    margin-top: 100px;
+}
+
+#list-title {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 40px;
+	  font-size: 40px;
+}
+
+#todo-status-view ul {
+    list-style-type: none;
+}
+
+#todo-time-view ul {
+    list-style-type: none;
+}
+
+
+#todo-list-view {
+    display:flex;
+}
+
+

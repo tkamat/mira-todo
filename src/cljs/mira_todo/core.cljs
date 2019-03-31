@@ -4,8 +4,7 @@
    [re-frame.core :as re-frame]
    [mira-todo.events :as events]
    [mira-todo.views :as views]
-   [mira-todo.config :as config]
-   ))
+   [mira-todo.config :as config]))
 
 
 (defn dev-setup []
@@ -19,6 +18,6 @@
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
-  (re-frame/dispatch-sync [::events/initialize-db])
+  (re-frame/dispatch-sync [:initialize-db])
   (dev-setup)
   (mount-root))

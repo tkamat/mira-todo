@@ -16,9 +16,10 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.9.10"]]
-
-    :plugins      [[lein-figwheel "0.5.16"]]}
+   {:dependencies [[binaryage/devtools "0.9.10"]
+                   [figwheel-sidecar "0.5.17"]
+                   [day8.re-frame/re-frame-10x "0.3.7"]]
+    :plugins      [[lein-figwheel "0.5.17"]]}
    :prod { }
    }
 
@@ -26,13 +27,16 @@
   {:builds
    [{:id           "dev"
      :source-paths ["src/cljs"]
-     :figwheel     {:on-jsload "mira-todo.core/mount-root"}
+     :figwheel     {:on-jsload "mira-todo.core/mount-root"
+                    :websocket-host :js-client-host}
      :compiler     {:main                 mira-todo.core
                     :output-to            "resources/public/js/compiled/app.js"
                     :output-dir           "resources/public/js/compiled/out"
                     :asset-path           "js/compiled/out"
                     :source-map-timestamp true
-                    :preloads             [devtools.preload]
+                    :optimizations        :none
+                    :closure-defines      {"re_frame.trace.trace_enabled_QMARK_" true}
+                    :preloads             [devtools.preload day8.re-frame-10x.preload]
                     :external-config      {:devtools/config {:features-to-install :all}}
                     }}
 
@@ -43,7 +47,5 @@
                     :optimizations   :advanced
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
-
-
     ]}
   )
